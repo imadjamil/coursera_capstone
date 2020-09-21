@@ -11,7 +11,59 @@ This work aims at deriving a machine learning model to predict the severity of a
 The dataset used in this work is a countrywide car accident dataset that covers 49 states of the USA. The data is collected between February 2016 and June 2020. The collection was done by a variety of entities such as the US and state departments of transportation, law enforcement agencies, traffic cameras, and traffic sensors. The dataset includes about 3.5 million entries.
 
 The dataset consists of 48 features. Each record has an unique identifier. A column indicates the source entiry that collected the data record. The start time and end time of the accident are recorded as well as the starting and ending points latitude and latitude. These information clearly help predicting the traffic delay that could be caused by the accident. For instance, an accident that occurs on a main highway in the rush hour is 
-kely to result in a longer traffic delay than an accident that occurs in the countryside at midnight.
+kely to result in a longer traffic delay than an accident that occurs in the countryside at midnight. Below is the list of columns in the dataset.
+
+| Column                | Type    |
+|-----------------------|---------|
+| ID                    | object  |
+| Source                | object  |
+| TMC                   | float64 |
+| Severity              | int64   |
+| Start_Time            | object  |
+| End_Time              | object  |
+| Start_Lat             | float64 |
+| Start_Lng             | float64 |
+| End_Lat               | float64 |
+| End_Lng               | float64 |
+| Distance(mi)          | float64 |
+| Description           | object  |
+| Number                | float64 |
+| Street                | object  |
+| Side                  | object  |
+| City                  | object  |
+| County                | object  |
+| State                 | object  |
+| Zipcode               | object  |
+| Country               | object  |
+| Timezone              | object  |
+| Airport_Code          | object  |
+| Weather_Timestamp     | object  |
+| Temperature(F)        | float64 |
+| Wind_Chill(F)         | float64 |
+| Humidity(%)           | float64 |
+| Pressure(in)          | float64 |
+| Visibility(mi)        | float64 |
+| Wind_Direction        | object  |
+| Wind_Speed(mph)       | float64 |
+| Precipitation(in)     | float64 |
+| Weather_Condition     | object  |
+| Amenity               | bool    |
+| Bump                  | bool    |
+| Crossing              | bool    |
+| Give_Way              | bool    |
+| Junction              | bool    |
+| No_Exit               | bool    |
+| Railway               | bool    |
+| Roundabout            | bool    |
+| Station               | bool    |
+| Stop                  | bool    |
+| Traffic_Calming       | bool    |
+| Traffic_Signal        | bool    |
+| Turning_Loop          | bool    |
+| Sunrise_Sunset        | object  |
+| Civil_Twilight        | object  |
+| Nautical_Twilight     | object  |
+| Astronomical_Twilight | object  |
 
 This work uses the afformentioned dataset to predict the severity of the impact of an accident in terms of traffic delay.
 
