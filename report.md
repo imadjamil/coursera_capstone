@@ -1,5 +1,6 @@
 # Introduction
 >> Buisness problem description
+
 Traffic accident is a wolrdwide major public health concern. In 2017, 115 deaths per million inhabitants were caused by raod accident in the USA. Currently, road crashes are the leading cause of death in the USA. 
 
 One of the most important steps in managing traffic is estimating the severity of an accident. The latter provides critical information for emergency responders to evaluate the gravity level of each situation. Severity analysis helps also in estimating the potential impact of accidents and implementing efficient accident management and avoidance procedures. Furthermore, the accdident severity analysis helps in better managing traffic congestion and minimizing the delay caused by an accident. Finally and most importantly, severity analysis helps reducing the number of traffic accidents and their impact on public health.
