@@ -7,73 +7,32 @@ One of the most important steps in managing traffic is estimating the severity o
 
 This work aims at deriving a machine learning model to predict the severity of a car accident in terms of the impact on traffic delay. This will help authorities to implement efficient procedures to minimise the impact of road accidents. 
 
-# Data
+# The Data Source
 The dataset used in this work is a countrywide car accident dataset that covers 49 states of the USA. The data is collected between February 2016 and June 2020. The collection was done by a variety of entities such as the US and state departments of transportation, law enforcement agencies, traffic cameras, and traffic sensors. The dataset includes about 3.5 million entries.
 
-The dataset consists of 48 features. Each record has an unique identifier. A column indicates the source entiry that collected the data record. The start time and end time of the accident are recorded as well as the starting and ending points latitude and latitude. These information clearly help predicting the traffic delay that could be caused by the accident. For instance, an accident that occurs on a main highway in the rush hour is 
-kely to result in a longer traffic delay than an accident that occurs in the countryside at midnight. Below is the list of columns in the dataset.
+The dataset consists of 48 features. Each record has an unique identifier. A column indicates the source entity that collected the data record. The start time and end time of the accident are recorded as well as the starting and ending points latitude and latitude.
+These information clearly help predicting the traffic delay that could be caused by the accident. For instance, an accident that occurs on a main highway in the rush hour is likely to result in a longer traffic delay than an accident that occurs in the countryside at midnight. Below is the list of columns in the dataset.
 
-| Column                | Type    |
-|-----------------------|---------|
-| ID                    | object  |
-| Source                | object  |
-| TMC                   | float64 |
-| Severity              | int64   |
-| Start_Time            | object  |
-| End_Time              | object  |
-| Start_Lat             | float64 |
-| Start_Lng             | float64 |
-| End_Lat               | float64 |
-| End_Lng               | float64 |
-| Distance(mi)          | float64 |
-| Description           | object  |
-| Number                | float64 |
-| Street                | object  |
-| Side                  | object  |
-| City                  | object  |
-| County                | object  |
-| State                 | object  |
-| Zipcode               | object  |
-| Country               | object  |
-| Timezone              | object  |
-| Airport_Code          | object  |
-| Weather_Timestamp     | object  |
-| Temperature(F)        | float64 |
-| Wind_Chill(F)         | float64 |
-| Humidity(%)           | float64 |
-| Pressure(in)          | float64 |
-| Visibility(mi)        | float64 |
-| Wind_Direction        | object  |
-| Wind_Speed(mph)       | float64 |
-| Precipitation(in)     | float64 |
-| Weather_Condition     | object  |
-| Amenity               | bool    |
-| Bump                  | bool    |
-| Crossing              | bool    |
-| Give_Way              | bool    |
-| Junction              | bool    |
-| No_Exit               | bool    |
-| Railway               | bool    |
-| Roundabout            | bool    |
-| Station               | bool    |
-| Stop                  | bool    |
-| Traffic_Calming       | bool    |
-| Traffic_Signal        | bool    |
-| Turning_Loop          | bool    |
-| Sunrise_Sunset        | object  |
-| Civil_Twilight        | object  |
-| Nautical_Twilight     | object  |
-| Astronomical_Twilight | object  |
+For more details about the dataset, the reader is referred to [this page](https://smoosavi.org/datasets/us_accidents).
 
 This work uses the afformentioned dataset to predict the severity of the impact of an accident in terms of traffic delay.
 
-
-
-
 # Methodology
+## Data preperation
+### The target
+The target, i.e. label, column is named `Severity`. All the dataset entries have Severity values. The latter has 4 different values: 1, 2, 3, and 4, where 1 is the least impact on traffic and 4 is the highest impact on traffic. While almost 67% of the dataset entries have Severity of 1, less than 1% of entries have Severity of 4. The dataset is clearly skewed.
 
-# results
+### Collecting entity
+Almost 69% of the entries are collected from MapQuest, ~29% are collected from Bing, and less 2% of entries have source as MapQuest-Bing.
 
-# Duiscussion
+## Feature selection
+
+## Data understanding
+
+## Modeling
+
+# Results
+
+# Disscussion
 
 # Conclusion
