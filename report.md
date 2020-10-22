@@ -21,7 +21,7 @@ This work uses the afformentioned dataset to predict the severity of the impact 
 
 # Methodology
 ## Data preperation
-### Data shape
+### Original data shape
 Before any data processing, the data has a shape equal to `(3513617, 49)`.
 ### The target
 The target, i.e. label, column is named `Severity`. All the dataset entries have Severity values. The latter has 4 different values: 1, 2, 3, and 4, where 1 is the least impact on traffic and 4 is the most impact on traffic. 
@@ -56,7 +56,8 @@ The following features were not concidered because they don't bring information 
 
 ```python
 ['ID', 'Source', 'Timezone', 'Airport_Code', 'Zipcode', \
-'Weather_Timestamp', 'Country', 'State', 'Description', 'City', 'Astonomical_Twilight', 'Notical_Twilight']
+'Weather_Timestamp', 'Country', 'State', 'Description', \
+'City', 'Astonomical_Twilight', 'Notical_Twilight']
 ```
 
 ### Missing values
@@ -85,9 +86,10 @@ na in Visibility(mi): 2.1
 na in Wind_Speed(mph): 12.9%
 na in Wind_Direction: 1.7%
 na in Weather_Condition: 2.2%
+na in Sunrise_Sunset: 3.3e-3%
+na in Civil_Twilight: 3.3e-3%
 ```
 
->>>TODO: complete the list above.
 
 For the above columns, I decided to fill the missing values as follows:
 - with the column mean for `['Temperature(F)', 'Humidity(%)', 'Pressure(in)', \
@@ -95,11 +97,11 @@ For the above columns, I decided to fill the missing values as follows:
 - with the previous value for `['Weather_Condition', 'Wind_Direction', \
 'Astonomical_Twilight', 'Notical_Twilight', 'Civil_Twighlight', 'Sunrise_Sunset']` that are of categorical type. Since theoretically, the same location will have approximately the same weather and twilight conditions, this filling step has been done after sorting values with by the location of the accident using the following columns `['Start_Time', 'County', 'City']`.
 
-At this point, there are no missing values left in the dataset.
+At this point, there are no missing values left in the dataset and the data shape is `(3513617, 33)`.
 
 ### Final List
 
-Following is the final list of features that where selected for the machine learning process.
+Following is the final list of features that where selected for the machine learning phase.
 
 ```python
 features=[
@@ -110,17 +112,17 @@ features=[
 ]
 ```
 
-At this point the shape of the dataset is `(3513617, 20)`.
+At this point the shape of the dataset is `(3513617, 21)` including the target column. Note that the number of rows may vary because of the random nature of the sample procedure.
 
-## Preprocessing
+## Pre-processing
 
 A `onehotencoder` is applied on the columns of categorical type.
 
 A `standardscaler` is applied on the columns of numerical type.
 
-After this processing, the shape of the dataset chnaged to ``.
+Furthermore, since training a model with ~3 Million inputs is time and ressource conusming, I chosed to randomly select 10% of the dataset using `sample(frac=0.1) procedure of pandas.DataFrame`. Then, as already explained, a down-sampling is applied to cope with the skewness of the target classes.
 
->>>TODO fill the shape above.
+After this pre-processing, the shape of the final dataset changed to ``.
 
 ## Modeling
 
