@@ -29,21 +29,40 @@ Car accidents severity in the US (2016-2020) from the source below.
 
 ---
 
-
 # Feature selection
+
+After cleaning and feature selection, the final dataset have 20 features
+
+Selected features are as follows:
+
+    !python
+    features=[
+    'Start_Lat', 'Start_Lng', 'Distance(mi)', 'Side', 'Temperature(F)', \
+    'Humidity(%)', 'Pressure(in)', 'Visibility(mi)', 'Wind_Direction', \
+    'Sunrise_Sunset', 'Civil_Twilight', 'Weather_Condition', 'Crossing', \
+    'Junction', 'Traffic_Signal', 'year', 'month', 'day', 'hour', 'weekday'\
+    ]
 
 
 # Model
-    !python
-    def log(self, message, level='notice'):
-        if self.logger and not callable(self.logger):
-            raise ValueError(u"Invalid logger set, must be a callable")
 
-        if self.verbose and self.logger:
-            self.logger(message, level)
+The following models were compared:
+- Random Forest
+- Gradient Boosting
+- Linear SVM
+- MLP
+- KNN
+
+*Random Forest pipeline visualization*
+
+![rf](./dot/rf_pipeline_graph_240.png)
 
 ---
 
-# Resuls and conclusion
+# Resuls
 
+*Confusion matrix*
 
+![results](./img/results_240.png)
+
+Results show that Grandient Boosting and Random Forest are the best classifiers in this study.
