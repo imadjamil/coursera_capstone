@@ -47,13 +47,17 @@ Selected features are as follows:
 # Model
 
 The following models were compared:
+
 - Random Forest
 - Gradient Boosting
 - Linear SVM
 - MLP
 - KNN
 
-*Random Forest pipeline visualization*
+---
+
+# Random Forest pipeline
+
 
 ![rf](./dot/rf_pipeline_graph_240.png)
 
@@ -61,8 +65,12 @@ The following models were compared:
 
 # Resuls
 
-*Confusion matrix*
 
 ![results](./img/results_240.png)
+![top](./img/top_240.png)
 
-Results show that Grandient Boosting and Random Forest are the best classifiers in this study.
+--- 
+
+# Conclusion
+
+Results show that Grandient Boosting and Random Forest are the best classifiers in this study and that accident location, weather conditions, and time are the features that most impact the severity of an accident.
