@@ -1,0 +1,35 @@
+digraph{
+  nodesep=0.05;
+  ranksep=0.25;
+  orientation=portrait;
+  sch0[label="<f0> Start_Lat|<f1> Start_Lng|<f2> Distance(mi)|<f3> Side|<f4> Temperature(F)|<f5> Humidity(%)|<f6> Pressure(in)|<f7> Visibility(mi)|<f8> Wind_Direction|<f9> Sunrise_Sunset|<f10> Civil_Twilight|<f11> Weather_Condition|<f12> Crossing|<f13> Junction|<f14> Traffic_Signal|<f15> year|<f16> month|<f17> day|<f18> hour|<f19> weekday",shape=record,fontsize=8];
+
+  node1[label="union",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch0:f0 -> node1;
+  sch0:f1 -> node1;
+  sch0:f2 -> node1;
+  sch0:f3 -> node1;
+  sch0:f4 -> node1;
+  sch0:f5 -> node1;
+  sch0:f6 -> node1;
+  sch0:f7 -> node1;
+  sch0:f8 -> node1;
+  sch0:f9 -> node1;
+  sch0:f10 -> node1;
+  sch0:f11 -> node1;
+  sch0:f12 -> node1;
+  sch0:f13 -> node1;
+  sch0:f14 -> node1;
+  sch0:f15 -> node1;
+  sch0:f16 -> node1;
+  sch0:f17 -> node1;
+  sch0:f18 -> node1;
+  sch0:f19 -> node1;
+  sch1[label="<f0> -v-0",shape=record,fontsize=8];
+  node1 -> sch1:f0;
+
+  node2[label="StackingClassifier",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch1:f0 -> node2;
+  sch2[label="<f0> -v-1",shape=record,fontsize=8];
+  node2 -> sch2:f0;
+}

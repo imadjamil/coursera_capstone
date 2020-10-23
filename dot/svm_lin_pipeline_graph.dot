@@ -1,0 +1,100 @@
+digraph{
+  nodesep=0.05;
+  ranksep=0.25;
+  orientation=portrait;
+  sch0[label="<f0> Start_Lat|<f1> Start_Lng|<f2> Distance(mi)|<f3> Side|<f4> Temperature(F)|<f5> Humidity(%)|<f6> Pressure(in)|<f7> Visibility(mi)|<f8> Wind_Direction|<f9> Sunrise_Sunset|<f10> Civil_Twilight|<f11> Weather_Condition|<f12> Crossing|<f13> Junction|<f14> Traffic_Signal|<f15> year|<f16> month|<f17> day|<f18> hour|<f19> weekday",shape=record,fontsize=8];
+
+  node1[label="union",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch0:f3 -> node1;
+  sch0:f8 -> node1;
+  sch0:f9 -> node1;
+  sch0:f10 -> node1;
+  sch0:f11 -> node1;
+  sch1[label="<f0> -v-0",shape=record,fontsize=8];
+  node1 -> sch1:f0;
+
+  node2[label="SimpleImputer",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch1:f0 -> node2;
+  sch2[label="<f0> -v-1",shape=record,fontsize=8];
+  node2 -> sch2:f0;
+
+  node3[label="OneHotEncoder",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch2:f0 -> node3;
+  sch3[label="<f0> -v-1",shape=record,fontsize=8];
+  node3 -> sch3:f0;
+
+  node4[label="union",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch0:f0 -> node4;
+  sch0:f1 -> node4;
+  sch0:f2 -> node4;
+  sch0:f4 -> node4;
+  sch0:f5 -> node4;
+  sch0:f6 -> node4;
+  sch0:f7 -> node4;
+  sch4[label="<f0> -v-2",shape=record,fontsize=8];
+  node4 -> sch4:f0;
+
+  node5[label="SimpleImputer",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch4:f0 -> node5;
+  sch5[label="<f0> -v-3",shape=record,fontsize=8];
+  node5 -> sch5:f0;
+
+  node6[label="StandardScaler",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch5:f0 -> node6;
+  sch6[label="<f0> -v-3",shape=record,fontsize=8];
+  node6 -> sch6:f0;
+
+  node7[label="Identity",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch0:f3 -> node7;
+  sch0:f8 -> node7;
+  sch0:f9 -> node7;
+  sch0:f10 -> node7;
+  sch0:f11 -> node7;
+  sch0:f12 -> node7;
+  sch0:f13 -> node7;
+  sch0:f14 -> node7;
+  sch0:f15 -> node7;
+  sch0:f16 -> node7;
+  sch0:f17 -> node7;
+  sch0:f18 -> node7;
+  sch0:f19 -> node7;
+  sch7[label="<f0> -v-4|<f1> -v-5|<f2> -v-6|<f3> -v-7|<f4> -v-8|<f5> -v-9|<f6> -v-10|<f7> -v-11|<f8> -v-12|<f9> -v-13|<f10> -v-14|<f11> -v-15|<f12> -v-16",shape=record,fontsize=8];
+  node7 -> sch7:f0;
+  node7 -> sch7:f1;
+  node7 -> sch7:f2;
+  node7 -> sch7:f3;
+  node7 -> sch7:f4;
+  node7 -> sch7:f5;
+  node7 -> sch7:f6;
+  node7 -> sch7:f7;
+  node7 -> sch7:f8;
+  node7 -> sch7:f9;
+  node7 -> sch7:f10;
+  node7 -> sch7:f11;
+  node7 -> sch7:f12;
+
+  node8[label="union",shape=box,style="filled,rounded",color=cyan,fontsize=12];
+  sch3:f0 -> node8;
+  sch6:f0 -> node8;
+  sch7:f0 -> node8;
+  sch7:f1 -> node8;
+  sch7:f2 -> node8;
+  sch7:f3 -> node8;
+  sch7:f4 -> node8;
+  sch7:f5 -> node8;
+  sch7:f6 -> node8;
+  sch7:f7 -> node8;
+  sch7:f8 -> node8;
+  sch7:f9 -> node8;
+  sch7:f10 -> node8;
+  sch7:f11 -> node8;
+  sch7:f12 -> node8;
+  sch8[label="<f0> -v-17",shape=record,fontsize=8];
+  node8 -> sch8:f0;
+
+  node9[label="SVC",shape=box,style="filled,rounded",color=yellow,fontsize=12];
+  sch8:f0 -> node9;
+  sch9[label="<f0> PredictedLabel|<f1> Probabilities",shape=record,fontsize=8];
+  node9 -> sch9:f0;
+  node9 -> sch9:f1;
+}
