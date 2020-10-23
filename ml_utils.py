@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 import config as cfg
-import time
+import time, sys, os
+from mlinsights.plotting import pipeline2dot, pipeline2str
+from pyquickhelper.loghelper import run_cmd
 
 def my_fig(df):
     fig, ax = plt.subplots()
@@ -18,8 +20,6 @@ def cor_matrix(df):
     fig, ax = plt.subplots(figsize=(30,12))
 
     # Compute the correlation matrix
-    ad -y /tmp/nvimwtxgr1/4.ipy
-
     corr = df.corr()
 
     # Generate a mask for the upper triangle
@@ -41,4 +41,21 @@ def cor_matrix(df):
 
     ax.set_title('Correlation Matrix', fontdict=cfg.font)
     fig.savefig(cfg.OUTPUT_PATH+'cor-matrix_'+ time.strftime('%Y%m%d-%H%M%S') + '.png')
-#
+
+def plot_pipeline(dot=None, pipeline=None, dataframe=None, name='pipeline'):
+    
+    dot_file = name + "_graph.dot"
+    
+    if dot == None:
+        dot = pipeline2dot(pipeline, dataframe)
+        with open(dot_file, "w", encoding="utf-8") as f:
+            f.write(dot)
+
+    if sys.platform.startswith("win") and "Graphviz" not in os.environ["PATH"]:
+        os.environ['PATH'] = os.environ['PATH'] + r';C:\Program Files (x86)\Graphviz2.38\bin'
+
+    cmd = "dot -G=300 -Tpng {0} -o{0}.png".format(dot_file)
+    run_cmd(cmd, wait=True, fLOG=print);
+
+    #img = Image.open("graph.dot.png")
+    #img

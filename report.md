@@ -122,18 +122,49 @@ A `standardscaler` is applied on the columns of numerical type.
 
 Furthermore, since training a model with ~3 Million inputs is time and ressource conusming, I chosed to randomly select 10% of the dataset using `sample(frac=0.1) procedure of pandas.DataFrame`. Then, as already explained, a down-sampling is applied to cope with the skewness of the target classes.
 
-After this pre-processing, the shape of the final dataset changed to ``.
-
 ## Modeling
 
 Since the target is more of a categorical type, a classification algorithm will be the choice for the machine learning phase.
 
-First, I started with the `RandomForestClassifier` model.
+In order to get the best results, the choice was to compare the classification performance of multiple models. To facilitate the process, I chosed to implement all the steps into pipelines. Accordingly, five pipelines where defined for five different classification algorithms. The list of these algorithms is as follows:
 
-In order to get the best results, the choice was to compare the classification performance of multiple models.
+- Random Forest
+- Linear SVM
+- MLP
+- Gradient Boosting
+- KNN
+
+Following is a visualization of the pipeline of Random Forest. Other pipelines are very similar.
+
+<center><b>Random Forest pipeline</b></center>
+
+![rf](./dot/rf_pipeline_graph.dot.png "rf_pipeline")
 
 
-# Results Comparaison
+Finally, a pipeline was added for stacking all the algorithms using a StackingClassifier model. The purpose of this pipeline is to stack the output of individual models and use a classifier to compute the final prediction. This allows the stength of each model by using their output as input for final classifier. The final classifier is set to LogisticRegression. 
 
-# Disscussion and Conclusion
+Following is a visulization of the pipeline of for the Stacking Classifier where the feeding models are not shown.
+
+<center><b>Stacking Classifier pipeline</b></center>
+
+![stacking](./dot/stacking_pipeline_graph.dot.png "stacking_pipeline")
+
+Cross validation is used to train and test each of the pipeline. The confusion matrix in the results section is obtained using the `cross_val_predict` procedure of `sklearn`.
+
+# Results
+## Confusion matrix
+The results are shown in the form of confusion matrix for each of the algorithms described in the previous section. It is clear that the Random Forest and Gradient Boosting algorithms outperform teh rest of algorithms with much hogher accuracy, `0.725` for Gradient Boosting. Furthermore, the Stacking Classifier performance is superior than individual algorithms with an accuracy of `0.734`.
+
+![results](./img/results.png "Results")
+
+## Features importances
+This section show the results of Random Forest algorithm in the form of the importance of each feature on the classification task.
+
+
+![top](./img/top_10_features.png "Top features")
+
+# Conclusion
+The goal of this study was to analyse the different features that determine the severity of raod accidents. Firstly, the search for datasets led to an important database of more than 3 Million entries. The first step was to understand the data and prepare for the study. Unimportant columns were droped and missing values were treated using different approaches depeding on the number of missing value per columns. Then, the features were selected after a careful study of the correlation matrix. Next, datetime column was processed to fetch year, month, day, weekday in different columns. Finally, multiple pipelines were created to design the best classification method for the study.
+
+The results of this study showed that the most important factor that drives the severity of an accident is the location of that accident, i.e. Start_Lng and Start_Lat fearures. In the second place comes the weather condiditions and finally the time period within the day.
 
